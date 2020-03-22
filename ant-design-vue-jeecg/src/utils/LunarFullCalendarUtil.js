@@ -14,7 +14,7 @@ const calendarViewType = {
   basicWeek: 'basicWeek',  // 基础周视图
   basicDay: 'basicDay',//  基础天视图
   agendaWeek: 'agendaWeek', // 议程周视图
-  agendaDay: 'agendaDay' // 议程天视图
+  agendaDay: 'agendaDay', // 议程天视图
 }
 
 /* 定义默认视图 */
@@ -55,19 +55,19 @@ const defaultSettings = {
   // 周视图和日视同的左侧时间显示
   slotLabelFormat: 'HH:mm',
   // 设置第二天阈值
-  nextDayThreshold: '00:00:00'
+  nextDayThreshold: '00:00:00',
 }
 
 /** 提供了一些增强方法 */
 const CalendarMixins = {
-  data () {
+  data() {
     return {
       calenderCurrentViewType: defaultView
     }
   },
   methods: {
 
-    getCalendarConfigEventHandler () {
+    getCalendarConfigEventHandler() {
       return {
         // 处理 view changed 事件
         viewRender: (view, element) => {
@@ -84,21 +84,21 @@ const CalendarMixins = {
             this.handleViewChanged(type, view, element)
           }
 
-        }
+        },
       }
     },
 
     /** 获取 LunarFullCalendar 实例，ref = baseCalendar */
-    getCalendar (fn) {
+    getCalendar(fn) {
       return getRefPromise(this, 'baseCalendar').then(fn)
     },
 
-    calendarEmit (name, data) {
+    calendarEmit(name, data) {
       this.getCalendar(ref => ref.$emit(name, data))
     },
 
     /** 强制重新加载所有的事件（日程）*/
-    calendarReloadEvents () {
+    calendarReloadEvents() {
       this.calendarEmit('reload-events')
     }
   }

@@ -1,4 +1,4 @@
-import { asyncRouterMap, constantRouterMap } from '@/config/router.config'
+import { asyncRouterMap, constantRouterMap } from "@/config/router.config"
 
 /**
  * 过滤账户是否拥有某一个权限，并将菜单从加载列表移除
@@ -7,7 +7,7 @@ import { asyncRouterMap, constantRouterMap } from '@/config/router.config'
  * @param route
  * @returns {boolean}
  */
-function hasPermission (permission, route) {
+function hasPermission(permission, route) {
   if (route.meta && route.meta.permission) {
     let flag = -1
     for (let i = 0, len = permission.length; i < len; i++) {
@@ -29,7 +29,7 @@ function hasPermission (permission, route) {
  * @returns {*}
  */
 // eslint-disable-next-line
-function hasRole (roles, route) {
+function hasRole(roles, route) {
   if (route.meta && route.meta.roles) {
     return route.meta.roles.indexOf(roles.id)
   } else {
@@ -37,7 +37,7 @@ function hasRole (roles, route) {
   }
 }
 
-function filterAsyncRouter (routerMap, roles) {
+function filterAsyncRouter(routerMap, roles) {
   const accessedRouters = routerMap.filter(route => {
     if (hasPermission(roles.permissionList, route)) {
       if (route.children && route.children.length) {
@@ -49,6 +49,7 @@ function filterAsyncRouter (routerMap, roles) {
   })
   return accessedRouters
 }
+
 
 const permission = {
   state: {
@@ -63,7 +64,7 @@ const permission = {
     }
   },
   actions: {
-    GenerateRoutes ({ commit }, data) {
+    GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data
         console.log('-----mutations---data----', data)
@@ -75,10 +76,10 @@ const permission = {
       })
     },
     // 动态添加主界面路由，需要缓存
-    UpdateAppRouter ({ commit }, routes) {
+    UpdateAppRouter({ commit }, routes) {
       return new Promise(resolve => {
         //const [ roles ] = routes.constRoutes
-        let routelist = routes.constRoutes
+        let routelist = routes.constRoutes;
         commit('SET_ROUTERS', routelist)
         resolve()
       })

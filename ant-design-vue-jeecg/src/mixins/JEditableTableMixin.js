@@ -6,7 +6,7 @@ export const JEditableTableMixin = {
   components: {
     JEditableTable
   },
-  data () {
+  data() {
     return {
       title: '操作',
       visible: false,
@@ -26,7 +26,7 @@ export const JEditableTableMixin = {
   methods: {
 
     /** 获取所有的editableTable实例 */
-    getAllTable () {
+    getAllTable() {
       if (!(this.refKeys instanceof Array)) {
         throw this.throwNotArray('refKeys')
       }
@@ -35,7 +35,7 @@ export const JEditableTableMixin = {
     },
 
     /** 遍历所有的JEditableTable实例 */
-    eachAllTable (callback) {
+    eachAllTable(callback) {
       // 开始遍历
       this.getAllTable().then(tables => {
         tables.forEach((item, index) => {
@@ -47,7 +47,7 @@ export const JEditableTableMixin = {
     },
 
     /** 当点击新增按钮时调用此方法 */
-    add () {
+    add() {
       if (typeof this.addBefore === 'function') this.addBefore()
       // 默认新增空数据
       let rowNum = this.addDefaultRowNum
@@ -62,7 +62,7 @@ export const JEditableTableMixin = {
       this.edit({})
     },
     /** 当点击了编辑（修改）按钮时调用此方法 */
-    edit (record) {
+    edit(record) {
       if (typeof this.editBefore === 'function') this.editBefore(record)
       this.visible = true
       this.activeKey = this.refKeys[0]
@@ -71,7 +71,7 @@ export const JEditableTableMixin = {
       if (typeof this.editAfter === 'function') this.editAfter(this.model)
     },
     /** 关闭弹窗，并将所有JEditableTable实例回归到初始状态 */
-    close () {
+    close() {
       this.visible = false
       this.eachAllTable((item) => {
         item.initialize()
@@ -80,7 +80,7 @@ export const JEditableTableMixin = {
     },
 
     /** 查询某个tab的数据 */
-    requestSubTableData (url, params, tab, success) {
+    requestSubTableData(url, params, tab, success) {
       tab.loading = true
       getAction(url, params).then(res => {
         tab.dataSource = res.result || []
@@ -90,7 +90,7 @@ export const JEditableTableMixin = {
       })
     },
     /** 发起请求，自动判断是执行新增还是修改操作 */
-    request (formData) {
+    request(formData) {
       let url = this.url.add, method = 'post'
       if (this.model.id) {
         url = this.url.edit
@@ -113,18 +113,18 @@ export const JEditableTableMixin = {
     /* --- handle 事件 --- */
 
     /** ATab 选项卡切换事件 */
-    handleChangeTabs (key) {
+    handleChangeTabs(key) {
       // 自动重置scrollTop状态，防止出现白屏
       getRefPromise(this, key).then(editableTable => {
         editableTable.resetScrollTop()
       })
     },
     /** 关闭按钮点击事件 */
-    handleCancel () {
+    handleCancel() {
       this.close()
     },
     /** 确定按钮点击事件 */
-    handleOk () {
+    handleOk() {
       /** 触发表单验证 */
       this.getAllTable().then(tables => {
         /** 一次性验证主表和所有的次表 */
@@ -149,12 +149,12 @@ export const JEditableTableMixin = {
     /* --- throw --- */
 
     /** not a function */
-    throwNotFunction (name) {
+    throwNotFunction(name) {
       return `${name} 未定义或不是一个函数`
     },
 
     /** not a array */
-    throwNotArray (name) {
+    throwNotArray(name) {
       return `${name} 未定义或不是一个数组`
     }
 

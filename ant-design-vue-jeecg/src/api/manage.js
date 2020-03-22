@@ -11,34 +11,34 @@ const api = {
 export default api
 
 //post
-export function postAction (url, parameter) {
+export function postAction(url,parameter) {
   return axios({
     url: url,
-    method: 'post',
+    method:'post' ,
     data: parameter
   })
 }
 
 //post method= {post | put}
-export function httpAction (url, parameter, method) {
+export function httpAction(url,parameter,method) {
   return axios({
     url: url,
-    method: method,
+    method:method ,
     data: parameter
   })
 }
 
 //put
-export function putAction (url, parameter) {
+export function putAction(url,parameter) {
   return axios({
     url: url,
-    method: 'put',
+    method:'put',
     data: parameter
   })
 }
 
 //get
-export function getAction (url, parameter) {
+export function getAction(url,parameter) {
   return axios({
     url: url,
     method: 'get',
@@ -47,7 +47,7 @@ export function getAction (url, parameter) {
 }
 
 //deleteAction
-export function deleteAction (url, parameter) {
+export function deleteAction(url,parameter) {
   return axios({
     url: url,
     method: 'delete',
@@ -55,7 +55,7 @@ export function deleteAction (url, parameter) {
   })
 }
 
-export function getUserList (parameter) {
+export function getUserList(parameter) {
   return axios({
     url: api.user,
     method: 'get',
@@ -63,7 +63,7 @@ export function getUserList (parameter) {
   })
 }
 
-export function getRoleList (parameter) {
+export function getRoleList(parameter) {
   return axios({
     url: api.role,
     method: 'get',
@@ -71,7 +71,7 @@ export function getRoleList (parameter) {
   })
 }
 
-export function getServiceList (parameter) {
+export function getServiceList(parameter) {
   return axios({
     url: api.service,
     method: 'get',
@@ -79,7 +79,7 @@ export function getServiceList (parameter) {
   })
 }
 
-export function getPermissions (parameter) {
+export function getPermissions(parameter) {
   return axios({
     url: api.permissionNoPager,
     method: 'get',
@@ -89,7 +89,7 @@ export function getPermissions (parameter) {
 
 // id == 0 add     post
 // id != 0 update  put
-export function saveService (parameter) {
+export function saveService(parameter) {
   return axios({
     url: api.service,
     method: parameter.id == 0 ? 'post' : 'put',
@@ -103,11 +103,11 @@ export function saveService (parameter) {
  * @param parameter
  * @returns {*}
  */
-export function downFile (url, parameter) {
+export function downFile(url,parameter){
   return axios({
     url: url,
     params: parameter,
-    method: 'get',
+    method:'get' ,
     responseType: 'blob'
   })
 }
@@ -119,10 +119,10 @@ export function downFile (url, parameter) {
  * @param str
  * @returns {*}
  */
-export function getFileAccessHttpUrl (avatar, imgerver, subStr) {
-  if (avatar && avatar.indexOf(subStr) != -1) {
-    return avatar
-  } else {
-    return imgerver + '/' + avatar
+export function getFileAccessHttpUrl(avatar,imgerver,subStr) {
+  if(avatar && avatar.indexOf(subStr) != -1 ){
+    return avatar;
+  }else{
+    return imgerver + "/" + avatar;
   }
 }

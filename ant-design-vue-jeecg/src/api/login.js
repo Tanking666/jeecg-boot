@@ -12,7 +12,7 @@ import { axios } from '@/utils/request'
  * @param parameter
  * @returns {*}
  */
-export function login (parameter) {
+export function login(parameter) {
   return axios({
     url: '/sys/login',
     method: 'post',
@@ -20,7 +20,7 @@ export function login (parameter) {
   })
 }
 
-export function phoneLogin (parameter) {
+export function phoneLogin(parameter) {
   return axios({
     url: '/sys/phoneLogin',
     method: 'post',
@@ -28,7 +28,7 @@ export function phoneLogin (parameter) {
   })
 }
 
-export function getSmsCaptcha (parameter) {
+export function getSmsCaptcha(parameter) {
   return axios({
     url: api.SendSms,
     method: 'post',
@@ -36,7 +36,7 @@ export function getSmsCaptcha (parameter) {
   })
 }
 
-export function getInfo () {
+export function getInfo() {
   return axios({
     url: '/api/user/info',
     method: 'get',
@@ -46,13 +46,13 @@ export function getInfo () {
   })
 }
 
-export function logout (logoutToken) {
+export function logout(logoutToken) {
   return axios({
     url: '/sys/logout',
     method: 'post',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
-      'X-Access-Token': logoutToken
+      'X-Access-Token':  logoutToken
     }
   })
 }

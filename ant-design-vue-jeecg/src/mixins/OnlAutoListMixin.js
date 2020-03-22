@@ -1,5 +1,5 @@
 export const HrefJump = {
-  data () {
+  data() {
     return {
       fieldHrefSlots: [],
       hrefComponent: {
@@ -28,13 +28,13 @@ export const HrefJump = {
           cancel: () => this.hrefComponent.model.visible = false
         },
         is: null,
-        params: {}
+        params: {},
       }
     }
   },
   methods: {
     //支持链接href跳转
-    handleClickFieldHref (field, record) {
+    handleClickFieldHref(field, record) {
       let href = field.href
       let urlPattern = /(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?/
       let compPattern = /\.vue(\?.*)?$/
@@ -49,7 +49,7 @@ export const HrefJump = {
         }
       }
     },
-    openHrefCompModal (href) {
+    openHrefCompModal(href) {
       // 解析 href 参数
       let index = href.indexOf('?')
       let path = href
@@ -68,11 +68,11 @@ export const HrefJump = {
       }
       this.hrefComponent.model.visible = true
       this.hrefComponent.model.title = '@/views/' + path
-      this.hrefComponent.is = () => import('@/views/' + (path.startsWith('/') ? path.slice(1) : path))
+      this.hrefComponent.is = () => import('@/views/' + (path.startsWith('/')?path.slice(1):path))
       // 禁止body滚动，防止滚动穿透
       setTimeout(() => {
         document.body.style.overflow = 'hidden'
       }, 300)
-    }
+    },
   }
 }

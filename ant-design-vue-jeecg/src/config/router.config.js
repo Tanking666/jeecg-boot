@@ -5,7 +5,11 @@ import { UserLayout, TabLayout, RouteView, BlankLayout, PageView } from '@/compo
  * @type {[null,null]}
  */
 export const asyncRouterMap = [
-
+  {
+    path: '/video',
+    name: 'dashboard',
+    component: TabLayout,
+  },
   {
     path: '/',
     name: 'dashboard',
@@ -319,7 +323,7 @@ export const constantRouterMap = [
         path: 'alteration',
         name: 'alteration',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Alteration')
-      }
+      },
     ]
   },
 
@@ -362,6 +366,6 @@ export const constantRouterMap = [
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
-  }
+  },
 
 ]

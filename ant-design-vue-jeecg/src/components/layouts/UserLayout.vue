@@ -1,32 +1,34 @@
 <template>
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
-      <div class="top">
-        <div class="header">
-          <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Jeecg Boot</span>
-          </a>
+        <div class="top">
+          <div class="header">
+            <a href="/">
+              <img src="~@/assets/logo.svg" class="logo" alt="logo">
+              <span class="title">这是标题</span>
+            </a>
+          </div>
+          <div class="desc">
+            这是个副标题
+          </div>
         </div>
-        <div class="desc">
-          Jeecg Boot 是中国最具影响力的 企业级 快速开发平台
-        </div>
-      </div>
 
-      <route-view></route-view>
+        <route-view>
 
-      <div class="footer">
-        <div class="links">
-          <a href="http://doc.jeecg.com" target="_blank">帮助</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank">隐私</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE" target="_blank">条款</a>
-        </div>
-        <div class="copyright">
-          Copyright &copy; 2019 <a href="http://www.jeecg.com" target="_blank">JEECG开源社区</a> 出品
+        </route-view>
+
+        <div class="footer">
+          <div class="links">
+            <a href="https://www.bilibili.com/" target="_blank">B站</a>
+            <a href="http://konachan.wjcodes.com/index.php?tag=realistic" target="_blank">K站</a>
+            <a href="https://www.baidu.com/" target="_blank">百度</a>
+          </div>
+          <div class="copyright">
+            Copyright &copy; 2099 <a href="http://kxyu.top" target="_blank">XXXX</a> 出品
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -55,9 +57,13 @@
 
     &.mobile {
       .container {
+        background: #f0f2f5 url(~@/assets/background2.jpg) no-repeat 50%;
+        position: fixed;
         .main {
-          max-width: 368px;
+          max-width: 70%;
           width: 98%;
+          margin: 20% auto 0 auto;
+          border-radius: 5px;
         }
       }
     }
@@ -65,10 +71,13 @@
     .container {
       width: 100%;
       min-height: 100%;
-      background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
+      background: #f0f2f5 url(~@/assets/background2.jpg) no-repeat 50%;
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
+      /*opacity:80%;*/
+
+
 
       a {
         text-decoration: none;
@@ -117,9 +126,13 @@
       }
 
       .main {
+        padding: 50px;
         min-width: 260px;
-        width: 368px;
-        margin: 0 auto;
+        width: 468px;
+        margin: auto 0 auto 60%;
+        background-color: rgba(255,255,255,0.7);
+        border-radius: 10px;
+
       }
 
       .footer {
