@@ -2,15 +2,15 @@
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
         <div class="top">
-          <div class="header">
-            <a href="/">
-              <img src="~@/assets/logo.svg" class="logo" alt="logo">
-              <span class="title">这是标题</span>
-            </a>
-          </div>
-          <div class="desc">
-            这是个副标题
-          </div>
+<!--          <div class="header">-->
+<!--            <a href="/">-->
+<!--              <img src="~@/assets/logo.svg" class="logo" alt="logo">-->
+<!--              <span class="title">这是标题</span>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="desc">-->
+<!--            这是个副标题-->
+<!--          </div>-->
         </div>
 
         <route-view>

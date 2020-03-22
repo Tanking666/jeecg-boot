@@ -1,24 +1,19 @@
-import { UserLayout, TabLayout, RouteView, BlankLayout, PageView } from '@/components/layouts'
-
+import { UserLayout, TabLayout, RouteView, BlankLayout, PageView,VideoLayout } from '@/components/layouts'
 /**
  * 走菜单，走权限控制
  * @type {[null,null]}
  */
 export const asyncRouterMap = [
+
   {
-    path: '/video',
-    name: 'dashboard',
-    component: TabLayout,
-  },
-  {
-    path: '/',
+    path: '/index',
     name: 'dashboard',
     component: TabLayout,
     meta: { title: '首页' },
     redirect: '/dashboard/workplace',
     children: [
 
-      // // dashboard
+      /*// // dashboard
       // {
       //   path: '/dashboard',
       //   name: 'dashboard',
@@ -190,13 +185,13 @@ export const asyncRouterMap = [
       //     {
       //       path: '/result/success',
       //       name: 'ResultSuccess',
-      //       component: () => import(/* webpackChunkName: "result" */ '@/views/result/Success'),
+      //       component: () => import(/!* webpackChunkName: "result" *!/ '@/views/result/Success'),
       //       meta: { title: '成功', hiddenHeaderContent: true, permission: [ 'result' ] }
       //     },
       //     {
       //       path: '/result/fail',
       //       name: 'ResultFail',
-      //       component: () => import(/* webpackChunkName: "result" */ '@/views/result/Error'),
+      //       component: () => import(/!* webpackChunkName: "result" *!/ '@/views/result/Error'),
       //       meta: { title: '失败', hiddenHeaderContent: true, permission: [ 'result' ] }
       //     }
       //   ]
@@ -213,19 +208,19 @@ export const asyncRouterMap = [
       //     {
       //       path: '/exception/403',
       //       name: 'Exception403',
-      //       component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+      //       component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/403'),
       //       meta: { title: '403', permission: [ 'exception' ] }
       //     },
       //     {
       //       path: '/exception/404',
       //       name: 'Exception404',
-      //       component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+      //       component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/404'),
       //       meta: { title: '404', permission: [ 'exception' ] }
       //     },
       //     {
       //       path: '/exception/500',
       //       name: 'Exception500',
-      //       component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
+      //       component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/500'),
       //       meta: { title: '500', permission: [ 'exception' ] }
       //     }
       //   ]
@@ -285,9 +280,10 @@ export const asyncRouterMap = [
       //       ]
       //     },
       //   ]
-      // }
+      // }*/
     ]
   },
+
   {
     path: '*', redirect: '/404', hidden: true
   }
@@ -298,6 +294,11 @@ export const asyncRouterMap = [
  * @type { *[] }
  */
 export const constantRouterMap = [
+  {
+    path: '/video',
+    name: 'VideoLayout',
+    component: VideoLayout
+  },
   {
     path: '/user',
     component: UserLayout,
@@ -323,7 +324,7 @@ export const constantRouterMap = [
         path: 'alteration',
         name: 'alteration',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Alteration')
-      },
+      }
     ]
   },
 
@@ -366,6 +367,6 @@ export const constantRouterMap = [
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
-  },
+  }
 
 ]

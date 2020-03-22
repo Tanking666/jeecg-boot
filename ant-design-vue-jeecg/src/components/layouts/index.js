@@ -6,4 +6,4 @@ import PageView from '@/components/layouts/PageView'
 import TabLayout from '@/components/layouts/TabLayout'
 import VideoLayout from '@/components/layouts/VideoLayout'
 
-export { UserLayout, BasicLayout, BlankLayout, RouteView, PageView, TabLayout,VideoLayout }
+export { UserLayout, BasicLayout, BlankLayout, RouteView, PageView, TabLayout, VideoLayout }
