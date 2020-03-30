@@ -241,9 +241,9 @@
             // update-end- --- author:scott ------ date:20190805 ---- for:密码加密逻辑暂时注释掉，有点问题
         },
         methods: {
-            goVideo () {
-                this.$router.push({ path:'/video'  });
-            },
+            // goVideo () {
+            //     this.$router.push({ path:'/video'  });
+            // },
             ...mapActions(['Login', 'Logout', 'PhoneLogin']),
             // handler
             handleUsernameOrEmail (rule, value, callback) {

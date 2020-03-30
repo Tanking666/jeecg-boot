@@ -42,82 +42,85 @@
 </template>
 
 <script>
-  import { putAction,getAction } from '@/api/manage'
-  export default {
-    name: "Step3",
+    import { putAction, getAction } from '@/api/manage'
+
+    export default {
+        name: 'Step3',
 //    components: {
 //      Result
 //    },
-    props: ['userList'],
-    data () {
-      return {
-        loading: false,
-        form: this.$form.createForm(this),
-        accountName: this.userList.username,
-        validatorRules: {
-          username: {rules: [{required: true, message: '用户名不能为空!'}]},
-          password: {
-            rules: [{
-              required: true,
-              pattern: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}:";'<>?,.\/]).{8,}$/,
-              message: '密码由8位数字、大小写字母和特殊符号组成!!'
-            }, {validator: this.handlePasswordLevel}]
-          },
-          confirmPassword: {rules: [{required: true, message: '密码不能为空!'}, {validator: this.handlePasswordCheck}]},
-        },
-      }
-    },
-    methods: {
-      nextStep () {
-        let that = this
-        that.loading = true
-        this.form.validateFields((err, values) => {
-          if ( !err ){
-          var params={}
-          params.username=this.userList.username;
-          params.password=values.password;
-          params.smscode=this.userList.smscode;
-          params.phone= this.userList.phone;
-          getAction("/sys/user/passwordChange", params).then((res) => {
-            if(res.success){
-            var userList = {
-              username: this.userList.username
+        props: ['userList'],
+        data () {
+            return {
+                loading: false,
+                form: this.$form.createForm(this),
+                accountName: this.userList.username,
+                validatorRules: {
+                    username: { rules: [{ required: true, message: '用户名不能为空!' }] },
+                    password: {
+                        rules: [{
+                            required: true,
+                            // pattern: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}:";'<>?,.\/]).{8,}$/,
+                            // message: '密码由8位数字、大小写字母和特殊符号组成!!'
+                            pattern: /^(?=.*[a-zA-Z]).{5,}$/,
+                            message: '密码由字母开头大于6位!'
+                        }, { validator: this.handlePasswordLevel }]
+                    },
+                    confirmPassword: { rules: [{ required: true, message: '密码不能为空!' }, { validator: this.handlePasswordCheck }] }
+                }
             }
-            console.log(userList);
-            setTimeout(function () {
-              that.$emit('nextStep', userList)
-            }, 1500)
-          }else{
-            this.passwordFailed(res.message);
-            that.loading = false
-          }
-        })
-        } else{
-          that.loading = false
-        }
-      })
+        },
+        methods: {
+            nextStep () {
+                let that = this
+                that.loading = true
+                this.form.validateFields((err, values) => {
+                    if (!err) {
+                        var params = {}
+                        params.username = this.userList.username
+                        params.password = values.password
+                        params.smscode = this.userList.smscode
+                        params.phone = this.userList.phone
+                        getAction('/sys/user/passwordChange', params).then((res) => {
+                            if (res.success) {
+                                var userList = {
+                                    username: this.userList.username
+                                }
+                                console.log(userList)
+                                setTimeout(function () {
+                                    that.$emit('nextStep', userList)
+                                }, 1500)
+                            } else {
+                                this.passwordFailed(res.message)
+                                that.loading = false
+                            }
+                        })
+                    } else {
+                        that.loading = false
+                    }
+                })
 
-      },
-      prevStep () {
-        this.$emit('prevStep', this.userList)
-      },
+            },
+            prevStep () {
+                this.$emit('prevStep', this.userList)
+            },
 
-      handlePasswordCheck (rule, value, callback) {
-        let password = this.form.getFieldValue('password')
-        if (value && password && value.trim() !== password.trim()) {
-          callback(new Error('两次密码不一致'))
+            handlePasswordCheck (rule, value, callback) {
+                let password = this.form.getFieldValue('password')
+                if (value && password && value.trim() !== password.trim()) {
+                    callback(new Error('两次密码不一致'))
+                }
+                callback()
+            },
+            passwordFailed (err) {
+                this.$notification['error']({
+                    message: '更改密码失败',
+                    description: err,
+                    duration: 4
+                })
+            }
         }
-        callback()
-      },
-      passwordFailed(err){
-        this.$notification[ 'error' ]({
-          message: "更改密码失败",
-          description:err,
-          duration: 4,
-        });
-      },
     }
-  }
 </script>
 <style lang="less" scoped>
   .stepFormText {

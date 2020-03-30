@@ -18,7 +18,7 @@ CREATE TABLE `sys_data_source` (
  `sys_org_code` varchar(64) DEFAULT NULL COMMENT '所属部门',
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-INSERT INTO `sys_data_source` VALUES ('1209779538310004737', 'MySQL5.7', '本地数据库MySQL5.7', '1', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false', 'jeecg-boot', 'root', 'root', 'admin', '2019-12-25 18:14:53', null, null, 'A01');
+INSERT INTO `sys_data_source` VALUES ('1209779538310004737', 'MySQL5.7', '本地数据库MySQL5.7', '1', 'com.mysql.cj.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false', 'jeecg-boot', 'root', 'root', 'admin', '2019-12-25 18:14:53', null, null, 'A01');
 
 -- 数据库类型字典
 INSERT INTO `sys_dict` (`id`, `dict_name`, `dict_code`, `description`, `del_flag`, `create_by`, `create_time`, `update_by`, `update_time`, `type`) VALUES ('1209733563293962241', '数据库类型', 'database_type', '', '0', 'admin', '2019-12-25 15:12:12', NULL, NULL, '0');

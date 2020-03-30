@@ -4,6 +4,6 @@ import BasicLayout from '@/components/layouts/BasicLayout'
 import RouteView from '@/components/layouts/RouteView'
 import PageView from '@/components/layouts/PageView'
 import TabLayout from '@/components/layouts/TabLayout'
-import VideoLayout from '@/components/layouts/VideoLayout'
+// import VideoLayout from '@/components/layouts/VideoLayout'
 
-export { UserLayout, BasicLayout, BlankLayout, RouteView, PageView, TabLayout, VideoLayout }
+export { UserLayout, BasicLayout, BlankLayout, RouteView, PageView, TabLayout /*VideoLayout*/ }

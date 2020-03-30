@@ -72,6 +72,7 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
 	@PermissionData(pageComponent = "jeecg/JeecgDemoList")
 	public Result<?> list(JeecgDemo jeecgDemo, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
 	                      HttpServletRequest req) {
+		System.out.println("TEST");
 		QueryWrapper<JeecgDemo> queryWrapper = QueryGenerator.initQueryWrapper(jeecgDemo, req.getParameterMap());
 		Page<JeecgDemo> page = new Page<JeecgDemo>(pageNo, pageSize);
 

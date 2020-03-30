@@ -294,11 +294,11 @@ export const asyncRouterMap = [
  * @type { *[] }
  */
 export const constantRouterMap = [
-  {
-    path: '/video',
-    name: 'VideoLayout',
-    component: VideoLayout
-  },
+  // {
+  //   path: '/video',
+  //   name: 'VideoLayout',
+  //   component: VideoLayout
+  // },
   {
     path: '/user',
     component: UserLayout,
